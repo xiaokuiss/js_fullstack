@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>confirm</title>
+    <script type="text/javascript">
+      function rec()
+      {
+        var mymessage=confirm("我是女士吗？");
+        if(mymessage==true)
+        {
+            document.write("你是女士！")
+        }
+      else
+      {
+        document.write("你是男士！")
+      }
+    }
+    </script>
+    </head>
+    <body>
+       <input name="button" type="button" onclick="rec()" value="点击我弹出对话框"/>
+    </body>
+</html>
