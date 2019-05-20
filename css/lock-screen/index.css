@@ -48,16 +48,16 @@ body {
   padding-top: 0.59rem;
   margin-bottom: 0.259rem;
 }
-.page_font,
-.page_foot__left,
-.page_foot__right {
+
+  
+.page_foot__left {
   color: rgba(255,255,255,0.5);
   font-size: 0.444rem;
-}
-.page_foot__left {
   margin-left: 0.25rem;
   flex: 1;
 }
 .page_foot__right {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.444rem;
   width: 1.88rem;
 }

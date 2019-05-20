@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贪吃蛇</title>
+    <style>
+    #gameCanvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #score {
+        text-align: center;
+        font-size: 70px;
+        font-family: serif;
+    }
+    </style>
+</head>
+<body>
+    <div id="score">0</div>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <script>
+    const gameCanvas = document.getElementById('gameCanvas');
+    // 绘制上下文环境 api 在ctx上
+    const ctx = gameCanvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    ctx.fillRect(0, 0, gameCanvas.width,gameCanvas.height);
+    ctx.strokeRect(0, 0, gameCanvas.width,gameCanvas.height);
+
+    
+    </script>
+</body>
+</html>

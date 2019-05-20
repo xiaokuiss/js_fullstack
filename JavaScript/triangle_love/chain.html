@@ -20,6 +20,7 @@
         this.name=name;
     }
     //继承
+    // new Animal._proto_=Animal.prototype
     Person.prototype = new Animal('earth');
     Person.prototype.getName=function(){
         return this.name;
