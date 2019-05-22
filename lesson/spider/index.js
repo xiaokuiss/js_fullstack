@@ -76,6 +76,8 @@ function downloadImage(picUrl) {
 }
 const total = 250;
 let start = 0;
+
+
 while (start < total) {
     doSpider(start);
     start += 25;

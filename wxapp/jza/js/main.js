@@ -11,6 +11,7 @@ let databus = new DataBus()
 /**
  * 游戏主函数
  */
+// import +export default
 export default class Main {
   constructor() {
     // 维护当前requestAnimationFrame的id
