@@ -82,9 +82,11 @@ function sendEmail(htmlData) {
         'utf8'
         )
     )
+
+    // {weatip: ''}
     const html = template(htmlData);
     // 发送邮件
-    let transporter = nodemailer.createTestAccount({
+    let transporter = nodemailer.createTransport({
         service: 'qq',
         port: 465,  //smtp 端口
         secureConnection: true,
@@ -93,7 +95,7 @@ function sendEmail(htmlData) {
             pass: 'xmfmrjwygdzybfch'
         }
     })
-    transporter.sendEmail(
+    transporter.sendMail(
       {
           from: '皮卡丘 <913233078@qq.com>',
           to: '913233078@qq.com',
