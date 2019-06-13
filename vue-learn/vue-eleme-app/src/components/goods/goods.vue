@@ -34,6 +34,10 @@
                   <span class="now">￥{{food.price}}</span>
                   <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
+                <!-- 添加 -->
+                <div class="cartcontrol-wrapper">
+                    
+                </div>
               </div>
             </li> 
           </ul>
