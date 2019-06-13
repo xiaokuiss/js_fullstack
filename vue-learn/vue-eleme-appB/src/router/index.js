@@ -15,6 +15,6 @@ export default new Router({
       path: '/goods',
       name: 'Goods',
       component: Goods
-    },
+    }
   ]
 })
