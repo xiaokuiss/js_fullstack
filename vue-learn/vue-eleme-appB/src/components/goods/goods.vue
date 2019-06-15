@@ -52,56 +52,119 @@
           </li>
         </ul>
       </div>
+      <shopcart 
+        ref="shopcart"
+        :selectFoods="selectFoods"
+        :deliveryPrice="seller.deliveryPrice"
+        :minPrice="seller.minPrice"
+      ></shopcart>
     </div>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
-import cartcontrol from '@/components/cartcontrol/cartcontrol'
+import BScroll from "better-scroll";
+import cartControl from "@/components/cartcontrol/cartcontrol";
+import shopcart from "@/components/shopcart/shopcart"
 export default {
-  name: 'Goods',
-  data () {
+  name: "Goods",
+  pros: {
+    seller: {
+      type: Object
+    }
+  },
+  data() {
     return {
+      goods: [],
       classMap: [],
-      goods: []
+      listHeight: [],
+      scrollY:0
+    };
+  },
+  computed: {
+    currentIndex() {
+      for(let i =0 ;i<this.listHeight.length;i++){
+        let height1= this.listHeight[i];
+        let height2= this.listHeight[i+1];
+        if(!height2 || (this.scrollY >= height1 && this.scrollY < height2) )return i;
+      }
+      return 0;
+    },
+    selectFoods(){
+      let foods = [];
+      this.goods.forEach(good=>{
+        good.foods.forEach(food=>{
+          if(food.count){
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   components: {
-    cartcontrol
+    cartControl,
+    shopcart
   },
   methods: {
-    _initScroll () {
+    _initScroll() {
       this.menuScroll = new BScroll(this.$refs.menuWrapper, {
         click: true
+      });
+      this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+        click: true,
+        probeType:3
+      });
+      this.foodsScroll.on("scroll",pos=>{
+        this.scrollY = Math.abs(Math.round(pos.y))
       })
     },
-    addFood (target) {
-      this._drop(target)
+    addFood(target) {
+      this._drop(target);
     },
-    _drop (target) {
+    _drop(target) {
       // 体验优化，异步执行下落动画
       this.$nextTick(() => {
         // 动画组件
-      })
+      });
+    },
+    selectMenu(index, event) {
+      if (!event._constructed) return;
+      let foodList = this.$refs.foodList;
+      let el = foodList[index];
+      this.foodsScroll.scrollToElement(el, 300);
+    },
+    selectFood(index, event) {
+      if (!event._constructed) return;
+    },
+    _calculateHeight() {
+      let foodList = this.$refs.foodList;
+      let height = 0;
+      this.listHeight.push(height);
+      foodList.forEach(item => {
+        height += item.clientHeight;
+        this.listHeight.push(height);
+      });
     }
   },
-  created () {
-    this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
-
-    this.$http.get('https://www.easy-mock.com/mock/5ca2c29464930718b239eb94/lm/vue-eleme-goods')
+  created() {
+    this.classMap = ["decrease", "discount", "special", "invoice", "guarantee"];
+    this.$http
+      .get("https://www.easy-mock.com/mock/5d00b0760507eb134409028d/goods")
       .then(res => {
-        // console.log(res)
         if (res.data.errno === 0) {
-          this.goods = res.data.data
-          this.$nextTick(() => { //页面渲染完成才能执行
-            this._initScroll()
-          })
+          this.goods = res.data.data;
+          this.$nextTick(() => {
+            //在页面渲染完成才会执行
+            this._initScroll();
+            this._calculateHeight();
+          });
         }
-      })
+      });
   }
-}
+};
 </script>
+
 
 <style lang="stylus">
 @import '../../common/stylus/mixin.styl'
