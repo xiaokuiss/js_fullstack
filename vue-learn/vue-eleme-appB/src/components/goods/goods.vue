@@ -68,7 +68,7 @@ import cartControl from "@/components/cartcontrol/cartcontrol";
 import shopcart from "@/components/shopcart/shopcart"
 export default {
   name: "Goods",
-  pros: {
+  props: {
     seller: {
       type: Object
     }
