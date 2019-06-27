@@ -4,7 +4,7 @@ import * as types from '../types'
 const state = {
     showSidebar: false,
     fullScreen: false,
-    searchHistory: [123]
+    searchHistory: []
 }
 
 const mutations = {
