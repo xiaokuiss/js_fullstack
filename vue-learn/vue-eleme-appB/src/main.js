@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import ratings from '../src/components/ratings/ratings'
 
 import './common/stylus/index.styl'
 
