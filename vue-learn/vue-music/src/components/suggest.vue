@@ -87,9 +87,7 @@ export default {
       this.$emit('select', item)
     },
     getDisplayName(item) {
-      return `${item.name 
-
-}-${item.artists[0] && item.artists[0].name}`
+      return `${item.name}-${item.artists[0] && item.artists[0].name}`
     },
     _checkMore(data) {
       if (data.songs.length < 12 || ((this.page - 1) * limit) >= data.songCount) {
