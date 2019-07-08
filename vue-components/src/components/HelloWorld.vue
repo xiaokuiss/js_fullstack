@@ -1,21 +1,37 @@
 <template>
   <div class="hello">
-   <i-button size="large">按钮</i-button>
+    <i-menu></i-menu>
+   <i-button size="large" @click.native="handleClick">按钮</i-button>
   </div>
 </template>
 
 <script>
 import button from '@/components/com/button'
+import menu from './com/menu'
 export default {
   name: 'HelloWorld',
+  provide () {
+    return {
+      name: this.obj 
+    }
+  },
   components: {
-    'i-button': button
+    'i-button': button,
+    'i-menu': menu
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      obj: {
+        name: '蜗牛'
+      }
     }
-  }
+  },
+  methods: {
+    handleClick () {
+      // console.log(val)
+    }
+  },
 }
 </script>
 

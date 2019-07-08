@@ -13,6 +13,7 @@ function oneOf(value, validList) {
   }
   return false    //在这false即结束
 }
+import bus from '@/bus/bus'
 export default {
   props: {
     size: {
@@ -28,9 +29,17 @@ export default {
   },
     data () {
       return {
-
+        msg: '我是button组件的数据'
       }
-    }
+    },
+    methods: {
+      handleClick(event) {
+        // console.log(event)
+        // console.log(123)
+        // this.$emit('on-click', this.msg)
+        bus.$emit('todo', this.msg)
+      }
+    },
 }
 </script>
 
