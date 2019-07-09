@@ -9,3 +9,7 @@ opcity  1
 string ref
 function ref
 object ref;
+
+## 受控组件 非受控组件 
+
+weex kpi 
