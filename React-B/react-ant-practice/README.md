@@ -1,0 +1,11 @@
+## touchStart
+按下去的时候
+opacity  .6
+
+## touchEnd
+opcity  1
+
+## ref
+string ref
+function ref
+object ref;
