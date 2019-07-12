@@ -28,7 +28,7 @@ class Notification extends Component {
     let notices = this.state.notices.slice(0);
     let notice = notices.findIndex(e => e.key === key);
     if (notice !== -1) {
-        const current = notices[notice];
+        const current = notices[notice];   
         if (current.onClose) current.onClose();
         notices.splice(notice, 1);
         this.setState({
