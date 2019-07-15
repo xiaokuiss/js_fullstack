@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+    import obj from './a.js';
+    const { a, b } = obj;    //应该先引进再解构
+    // 下面错误
+    // import {a, b} from './a.js'
+    // 但是可以导入命名导出的东西
+    import { c, d } from './a.js'
+    </script>
+</body>
+</html>
