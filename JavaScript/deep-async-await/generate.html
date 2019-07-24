@@ -23,6 +23,10 @@
         }    
         // 惰性的
         var g = test();
+        let gn = g.next();
+        while(!gn.done) {
+            gn = g.next(gn.value);
+        }
         // 生成一个 对象 { next }
         // 调用 next 一步一步执行
         // g.next()
@@ -30,6 +34,48 @@
         // g.next()
 
         // 让 generate 函数 自己全部执行完
+        function* test1() {
+            let a = yield true;
+            console.log('a', a);
+            let b = yield 1000;
+            console.log('b', b);
+        }
+        function autoRun(generateFun) {
+            let g = generateFun();
+            let gn = g.next();
+            while(!gn.done) {
+                gn = g.next(gn.value);
+            }
+        }
+        autoRun(test1);
+        autoRun(test);
+
+        function autoRun1(generateFun) {
+            var g = generateFun();
+            function next(data) {
+                var result = g.next(data);
+                if (result.done) return;
+                next(resulr.value);
+            }
+            next()
+        }
+
+        (async function () {
+            let a = await 1;
+            let b = await 2;
+        })()
+        let fooPromise = function() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {resolve()},1000)
+            })
+        }
+        _asyncToGenerator(
+            function* () {
+                let a = yield fooPromise();
+                let b = yield 2;
+            }
+        )
+
     </script>
 </body>
 </html>
