@@ -23,11 +23,11 @@ export default {
   },
 }
 
-</script>>
+</script>
 
 <style lang="stylus" scoped>
   .md-example-child-result-page-3
-    background #ffffff
+    background-color #fff
     position absolute
     top 50%
     left 50%
